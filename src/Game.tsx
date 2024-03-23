@@ -1,49 +1,25 @@
 import { useState } from "react";
 
-function Game() {
-  const countryObject: { [type: string]: string } = {
-    Afghanistan: 'Kabul',
-    Argentina: 'Buenos Aires',
-    Bolivia: 'La Paz',
-    Brazil: 'Brasília',
-    Canada: 'Ottawa',
-    Chile: 'Santiago',
-    China: 'Beijing',
-    Cuba: 'Havana',
-    Egypt: 'Cairo',
-    England: 'London',
-    France: 'Paris',
-    Germany: 'Berlin',
-    India: 'New Delhi',
-    Ireland: 'Dublin',
-    Israel: 'Jerusalem',
-    Italy: 'Roma',
-    Japan: 'Tokyo',
-    Peru: 'Lima',
-    Portugal: 'Lisboa',
-    'Russian Federation': 'Moscow',
-    'South Korea': 'Seoul',
-    Spain: 'Madrid',
-    Ukraine: 'Kyiv',
-    'United Arab Emirates': 'Abu Dhabi',
-    'United States': 'Washington',
-  };
 
-  const shuffle = (array: string[]) => {
-    let currentIndex = array.length, randomIndex;
-    while (currentIndex > 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
-    }
-    return array;
+const shuffle = (array: string[]) => {
+  let currentIndex = array.length, randomIndex;
+  while (currentIndex > 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
   }
+  return array;
+}
+
+function Game({countryObject} : {countryObject:{ [type: string]: string }}) {
+
   const [arrList, setArrList] = useState<string[]>(shuffle([...Object.keys(countryObject), ...Object.values(countryObject)]));
   const [activeClass, setActiveClass] = useState<number[]>([]);
   const [className, setClassName] = useState<string>('active');
   const [busy, setBusy] = useState<boolean>(false);
 
+  
   const match = (index: number) => {
     if(busy){
       return;
