@@ -11,7 +11,7 @@ describe('Game component UTs', () => {
 
   // Test to check if clicking on a card updates the game state
   it('should update game state when clicking on a card', async () => {
-    render(<Game countryObject={{ "Country 1": "Capital 1", "Country 2": "Capital 2" }} />);
+    render(<Game countryObject={{ "Country 1a": "Capital 1", "Country 2": "Capital 2" }} />);
     const card = screen.getByText('Country 1'); // Replace with the text of the first card
     userEvent.click(card);
     await waitFor(() => {
