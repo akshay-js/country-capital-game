@@ -2,7 +2,7 @@ import { userEvent } from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
 import Game from './Game'; 
 
-describe('Game component', () => {
+describe('Game component UTs', () => {
   // Test to check if the game title is rendered
   it('should render the game title', () => {
     render(<Game countryObject={{}} />);
